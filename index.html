@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Living hell</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="three-container"></div>
+
+<div id="instructions">
+	Russia. 56°15'48.9"N 43°39'44.7"E
+</div>
+<!-- partial -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.7/addons/p5.sound.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+<script src="sketch.js"></script>
+<script src="vehicle.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r75/three.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/bas.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/OrbitControls-2.js'></script><script  src="./script.js"></script>
+
+<script>
+  var p5Texture;
+
+        function loadP5Sketch(p5Canvas,x,y,z) {
+            ////PUT IN A P5 SKETCH USING THE CANVAS MADE IN P5 AS A TEXTURE
+            geo = new THREE.PlaneGeometry(512, 512);
+            p5Texture = new THREE.Texture(p5Canvas);
+            console.log("added texture");
+            mat = new THREE.MeshBasicMaterial({ map: p5Texture, transparent: true, opacity: 1, side: THREE.DoubleSide });
+            var plane = new THREE.Mesh(geo, mat);
+            plane.position.z = -200;
+            plane.position.y = y;
+            plane.rotation.x = x;  //-Math.PI/2;
+            plane.scale.set(1, 1, 1);
+            scene.add(plane);
+            
+        }
+
+    </script>
+
+</body>
+</html>
